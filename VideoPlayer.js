@@ -13,7 +13,6 @@ import {
     View
 } from 'react-native';
 import _ from 'lodash';
-import resolveAssetSource from 'resolveAssetSource';
 
 export default class VideoPlayer extends Component {
     static defaultProps = {
@@ -877,7 +876,7 @@ export default class VideoPlayer extends Component {
      * Render the volume slider and attach the pan handlers
      */
     renderVolume() {
-        let volumeIcon = resolveAssetSource(require( './assets/img/volume.png' ));
+        let volumeIcon = Image.resolveAssetSource(require( './assets/img/volume.png' ));
         return (
             <View style={styles.volume.container}>
                 <View style={[
