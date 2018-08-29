@@ -144,6 +144,17 @@ export default class VideoPlayer extends Component {
         };
     }
 
+    get topControlsDisabled() {
+        return this.props.disableBack && this.props.disableVolume && this.props.disableFullscreen;
+    }
+
+    get bottomControlsDisabled() {
+        return this.props.disablePlayPause && this.props.disableTimer && this.props.disableSeekbar;
+    }
+
+    get allControlsDisabled() {
+        return this.props.disableAllControls || this.topControlsDisabled && this.bottomControlsDisabled;
+    }
 
     /**
      | -------------------------------------------------------
@@ -829,7 +840,7 @@ export default class VideoPlayer extends Component {
      * view and spaces them out.
      */
     renderTopControls() {
-        if(this.props.disableAllControls) {
+        if(this.allControlsDisabled || this.topControlsDisabled) {
             return null;
         }
 
@@ -920,7 +931,7 @@ export default class VideoPlayer extends Component {
      * Render bottom control group and wrap it in a holder
      */
     renderBottomControls() {
-        if(this.props.disableAllControls) {
+        if(this.allControlsDisabled || this.bottomControlsDisabled) {
             return null;
         }
 
