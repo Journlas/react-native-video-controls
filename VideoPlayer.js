@@ -987,7 +987,7 @@ export default class VideoPlayer extends Component {
                 <View
                     style={[
                         styles.seekbar.handle,
-                        {left: this.state.seekerPosition - 14}
+                        {left: this.state.seekerPosition - 20}
                     ]}
                     {...this.player.seekPanResponder.panHandlers}
                 >
@@ -1321,8 +1321,8 @@ const styles = {
         },
         handle: {
             position: 'absolute',
-            height: 28,
-            width: 28,
+            height: 40,
+            width: 40,
             alignItems: "center",
             justifyContent: "center",
         },
