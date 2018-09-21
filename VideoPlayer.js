@@ -904,11 +904,13 @@ export default class VideoPlayer extends Component {
                 <View
                     style={[
                         styles.volume.handle,
-                        {left: this.state.volumePosition - volumeIcon.width / 2}
+                        {left: this.state.volumePosition - 20}
                     ]}
                     {...this.player.volumePanResponder.panHandlers}
                 >
-                    <Image style={styles.volume.icon} source={volumeIcon}/>
+                    <View style={styles.volume.iconWrapper}>
+                        <Image style={[styles.volume.icon]} source={volumeIcon}/>
+                    </View>
                 </View>
             </View>
         );
@@ -1298,6 +1300,15 @@ const styles = {
         },
         handle: {
             position: 'absolute',
+            alignItems: "flex-start",
+            justifyContent: "center",
+        },
+        iconWrapper:{
+            width:40,
+            height:40,
+            backgroundColor:"transparent",
+            justifyContent:"center",
+            alignItems:"center"
         }
     }),
     seekbar: StyleSheet.create({
@@ -1321,6 +1332,7 @@ const styles = {
         },
         handle: {
             position: 'absolute',
+            backgroundColor:"transparent",
             height: 40,
             width: 40,
             alignItems: "center",
