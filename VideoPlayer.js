@@ -378,11 +378,13 @@ export default class VideoPlayer extends Component {
      * state then calls the animation.
      */
     _hideControls() {
-        let state = this.state;
-        state.showControls = false;
-        this.hideControlAnimation();
+        if(this.mounted) {
+            let state = this.state;
+            state.showControls = false;
+            this.hideControlAnimation();
 
-        this.setState(state);
+            this.setState( state );
+        }
     }
 
     /**
@@ -680,6 +682,7 @@ export default class VideoPlayer extends Component {
         let state = this.state;
         this.setVolumePosition(position);
         state.volumeOffset = position;
+        this.mounted = true;
 
         this.setState(state);
     }
@@ -689,6 +692,7 @@ export default class VideoPlayer extends Component {
      * timeout less it fire in the prev/next scene
      */
     componentWillUnmount() {
+        this.mounted = false;
         this.clearControlTimeout();
     }
 
