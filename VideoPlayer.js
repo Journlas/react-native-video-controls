@@ -171,7 +171,7 @@ export default class VideoPlayer extends Component {
      * When load starts we display a loading icon
      * and show the controls.
      */
-    onLoadStart = () => {
+    onLoadStart() {
         let state = this.state;
         state.loading = true;
         state.loadingComplete = false;
